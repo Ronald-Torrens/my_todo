@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./app.css">
+    <title>Task Manager</title>
+</head>
+<body>
+    <section class="task-manager" id="task-manager">
+        <div>
+            <button id="task-theme-button">
+                <div></div>
+            </button>
+        </div>
+                
+        <section>
+           <h1>Task Manager</h1>
+            <form class="task-form" id="task-form">
+                <input type="text" class="task-input" id="task-input" placeholder="Enter a new task" required>
+                <input type="submit" value="Add Task" class="add-task-button" id="add-task-button">
+            </form> 
+        </section>
+        <section id="task-content">
+            <ul id="task-list">
+            </ul>
+        </section>
+
+        <button type="button" id="clear-button" class="clear-button">
+            Borrar Todo
+        </button>
+    </section>
+    <script type="module" src="./app.js"></script>
+</body>
+</html>

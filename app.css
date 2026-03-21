@@ -1,0 +1,132 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 10px;
+    margin: 0;
+  }
+  
+  #task-manager {
+    background: #fff;
+    padding: 20px;
+    margin: auto;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #task-theme-button {
+    width: 30px;
+    height: 15px;
+    background-color: grey;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    justify-self: right;
+  }
+  #task-theme-button div {
+    width: 15px;
+    height: 15px;
+    background-color: black;
+    border: none;
+    margin: 0;
+    border-radius: 50%;
+  }
+
+  #task-form {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  #task-input {
+    padding: 10px;
+    width: 75%;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .add-task-button {
+    background-color: rgba(0, 0, 255, 0.589);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    width: 20%;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  #task-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #task-list li {
+    background: #eee;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+  .task-list-edit-button,
+  .task-list-del-button {
+    margin-left: 8px;
+    color: blue;
+    font-size: 10px;
+    cursor: pointer;
+  }
+
+  .clear-button {
+    display: none;
+    background-color: rgba(255, 102, 0, 0.288);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    width: 20%;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    justify-self: center;
+  }
+  .clear-button-active {
+    display: block;
+  }
+
+  /* Dark theme styles */
+  body.dark-theme {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .dark-theme #task-manager {
+    background: #222;
+    color: #fff;
+  }
+  
+  .dark-theme #task-list li {
+    background: #444;
+  }
+
+  .dark-theme #task-input {
+    background: #585757;
+    color: white;
+    box-shadow: 0 0 10px rgba(248, 247, 247, 0.137);
+  }
+  .dark-theme .add-task-button {
+    background: #585757;
+    box-shadow: 0 0 10px rgba(248, 247, 247, 0.137);
+  }
+  .dark-theme .task-list-edit-button,
+  .dark-theme .task-list-del-button {
+    color: #cacaca;
+  }
