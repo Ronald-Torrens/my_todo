@@ -35,24 +35,54 @@ async function loadTasks() {
 function createTaskListElement(task) {
   const li = document.createElement('li');
   li.dataset.id = task.id;
-  li.textContent = task.name;
 
-  const liContainer = document.createElement('div');
-  liContainer.append(
-    createButton('Edit', 'task-list-edit-button'),
-    createButton('Del', 'task-list-del-button')
+  const left = document.createElement('div');
+  left.className = 'task-left';
+
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.className = 'task-checkbox';
+
+  const taskText = document.createElement('span');
+  taskText.textContent = task.name;
+  taskText.className = 'task-text';
+
+  left.append(checkbox, taskText);
+
+  const actions = document.createElement('div');
+  actions.className = 'task-actions';
+
+  actions.append(
+    createButton('edit', 'task-list-edit-button'),
+    createButton('delete', 'task-list-del-button')
   );
-  li.append(liContainer);
+
+  li.append(left, actions);
+
   taskList.append(li);
   toggleClearButton();
-}
+};
 
-function createButton(text, className) {
+function createButton(iconName, className) {
   const btn = document.createElement('span');
-  btn.textContent = text;
   btn.className = className;
+
+  const img = document.createElement('img');
+  img.src = `./assets/${iconName}.svg`;
+  img.alt = iconName;
+  img.width = 16; // tamaño de icono
+  img.height = 16;
+
+  btn.appendChild(img);
   return btn;
 }
+
+taskList.addEventListener('change', (event) => {
+  if (event.target.classList.contains('task-checkbox')) {
+    const li = event.target.closest('li');
+    li.classList.toggle('task-completed');
+  }
+});
 
 // ---- ADD TASK ----
 taskForm.addEventListener('submit', async (event) => {
@@ -67,7 +97,7 @@ taskForm.addEventListener('submit', async (event) => {
     taskInput.value = '';
   } catch (error) {
     alert(error.message);
-  }
+  };
 });
 
 // ---- TASK LIST CLICK (EDIT & DELETE) ----
@@ -75,20 +105,24 @@ taskList.addEventListener('click', async (event) => {
   const li = event.target.closest('li');
   if (!li) return;
 
+  const editBtn = event.target.closest('.task-list-edit-button');
+  const delBtn = event.target.closest('.task-list-del-button');
+
   // EDIT
-  if (event.target.classList.contains('task-list-edit-button')) {
-    const newName = prompt('Edite su tarea:', li.firstChild.textContent);
+  if (editBtn) {
+    const taskText = li.querySelector('.task-text');
+    const newName = prompt('Edite su tarea:', taskText.textContent);
     if (!newName) return;
     try {
       const updatedTask = await updateTask(li.dataset.id, newName);
-      li.firstChild.textContent = updatedTask.name;
+      taskText.textContent = updatedTask.name;
     } catch (error) {
       alert(error.message);
-    }
-  }
+    };
+  };
 
   // DELETE
-  if (event.target.classList.contains('task-list-del-button')) {
+  if (delBtn) {
     if (!confirm('¿Usted está seguro de querer eliminar esta tarea?')) return;
     try {
       await deleteTaskApi(li.dataset.id);
@@ -96,8 +130,8 @@ taskList.addEventListener('click', async (event) => {
       toggleClearButton();
     } catch (error) {
       alert(error.message);
-    }
-  }
+    };
+  };
 });
 
 // ---- DELETE ALL TASKS ----
@@ -109,7 +143,7 @@ clearButton.addEventListener('click', async () => {
     toggleClearButton();
   } catch (error) {
     alert(error.message);
-  }
+  };
 });
 
 // ---- TOGGLE CLEAR BUTTON ----
@@ -119,8 +153,8 @@ function toggleClearButton() {
     clearButton.classList.add('clear-button-active');
   } else {
     clearButton.classList.remove('clear-button-active');
-  }
-}
+  };
+};
 
 // ---- INITIAL LOAD ----
 loadTasks();

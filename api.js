@@ -1,6 +1,4 @@
-
-
-const API_URL = 'https://my-todo-api-rest.onrender.com/api/v1/tasks';  // ajusta según tu servidor
+import { API_URL } from './config/config.js';
 
 export async function getTasks() {
   const res = await fetch(API_URL);
