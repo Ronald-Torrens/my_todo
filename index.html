@@ -8,19 +8,20 @@
 </head>
 <body>
     <section class="task-manager" id="task-manager">
-        <div id="task-theme-container">
-            <button id="task-theme-button">
-                <div></div>
-            </button>
-        </div>
-                
-        <section>
+        <section class="task-header">
+            <div id="task-theme-container">
+                <button id="task-theme-button">
+                    <img src="./assets/dark.svg" alt="Cambiar Tema">
+                </button>
+            </div>
+        
            <h1>Task Manager</h1>
             <form class="task-form" id="task-form">
                 <input type="text" class="task-input" id="task-input" placeholder="Enter a new task" required>
                 <input type="submit" value="Add Task" class="add-task-button" id="add-task-button">
             </form> 
         </section>
+
         <section id="task-content">
             <ul id="task-list">
             </ul>
