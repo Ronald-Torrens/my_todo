@@ -16,6 +16,12 @@ body {
     flex-direction: column;
     justify-content: center;
   }
+
+  #task-theme-container button {
+    position: absolute;
+    justify-self: right;
+  }
+
   #task-theme-button {
     width: 30px;
     height: 15px;
@@ -28,8 +34,10 @@ body {
     padding: 0;
     display: flex;
     justify-content: center;
+    /*
     position: absolute;
     justify-self: right;
+    */
   }
   #task-theme-button div {
     width: 15px;

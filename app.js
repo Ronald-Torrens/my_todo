@@ -77,7 +77,7 @@ taskList.addEventListener('click', async (event) => {
 
   // EDIT
   if (event.target.classList.contains('task-list-edit-button')) {
-    const newName = prompt('Edit task:', li.firstChild.textContent);
+    const newName = prompt('Edite su tarea:', li.firstChild.textContent);
     if (!newName) return;
     try {
       const updatedTask = await updateTask(li.dataset.id, newName);
@@ -89,7 +89,7 @@ taskList.addEventListener('click', async (event) => {
 
   // DELETE
   if (event.target.classList.contains('task-list-del-button')) {
-    if (!confirm('Are you sure you want to delete this task?')) return;
+    if (!confirm('¿Usted está seguro de querer eliminar esta tarea?')) return;
     try {
       await deleteTaskApi(li.dataset.id);
       li.remove();
@@ -102,7 +102,7 @@ taskList.addEventListener('click', async (event) => {
 
 // ---- DELETE ALL TASKS ----
 clearButton.addEventListener('click', async () => {
-  if (!confirm('Are you sure you want to delete all tasks?')) return;
+  if (!confirm('¿Usted está seguro de querer eliminar todas sus tareas?')) return;
   try {
     await deleteAllTasksApi();
     taskList.innerHTML = '';
