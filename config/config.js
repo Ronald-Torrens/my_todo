@@ -1,6 +1,6 @@
 // URL`s
-const DEV_API = 'http://localhost:3000/api/v1/tasks';
-const PROD_API = 'https://my-todo-api-rest.onrender.com/api/v1/tasks';
+const DEV_API = 'http://localhost:3000/api/v1';
+const PROD_API = 'https://my-todo-api-rest.onrender.com/api/v1';
 
 const hostname = window.location.hostname;
 

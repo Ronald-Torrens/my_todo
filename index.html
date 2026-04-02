@@ -7,30 +7,87 @@
     <title>Task Tracker</title>
 </head>
 <body>
-    <section class="task-manager" id="task-manager">
-        <section class="task-header">
+
+        <!-- LOGIN -->
+    <div id="login-container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <input type="email" name="email" placeholder="Correo electrónico" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <button type="submit">Ingresar</button>
+        </form>
+        <p>¿No tienes cuenta? <a href="#" id="go-register">Regístrate</a></p>
+        <p>¿Olvidaste tu contraseña? <a href="#" id="go-forgot">Recuperar</a></p>
+
+        <p id="login-error" style="color:red;"></p>
+    </div>
+
+        <!-- REGISTER -->
+    <div id="register-container">
+        <h2>Regístrate</h2>
+        <form id="register-form">
+            <input type="text" name="nickname" placeholder="Nombre de usuario" required>
+            <input type="email" name="email" placeholder="Correo electrónico" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <button type="submit">Registrate</button>
+        </form>
+       
+        <p id="register-error" style="color:red;"></p>
+    </div>
+
+        <!-- FORGOT -->
+    <div id="forgot-container">
+        <h2>Recuperación de contraseña</h2>
+        <form id="forgot-form">
+            <input type="email" name="email" placeholder="Correo electrónico" required>
+            <button type="submit">Recuperar</button>
+        </form>
+        <p id="forgot-error" style="color:red;"></p>
+    </div>
+    
+    <!-- CHANGE PASSWORD -->
+    <div id="change-password-container">
+        <h2>Recuperación de contraseña</h2>
+        <form id="change-password-form">
+            <input type="password" name="password" placeholder="Nueva contraseña" required>
+            <input type="password" name="re-password" placeholder="Confirmar nueva contraseña" required>
+            <button type="submit">Cambiar contraseña</button>
+        </form>
+        <p id="change-password-error" style="color:red;"></p>
+    </div>
+
+
+    <!-- TASK MANAGER -->
+    <div id="task-manager" style="display:none;">
+        <div id="task-manager-header">
+            <span id="welcome-message">Hola 👋</span>
+            <span id="task-counter"></span>
             <div id="task-theme-container">
                 <button id="task-theme-button">
                     <img src="./assets/dark.svg" alt="Cambiar Tema">
                 </button>
+                <button id="logout-button">
+                    <img src="./assets/logout-1.png" alt="Cerrar sesión">
+                </button>
             </div>
+        </div>
         
-           <h1>Task Manager</h1>
-            <form class="task-form" id="task-form">
-                <input type="text" class="task-input" id="task-input" placeholder="Enter a new task" required>
-                <input type="submit" value="Add Task" class="add-task-button" id="add-task-button">
-            </form> 
-        </section>
 
-        <section id="task-content">
-            <ul id="task-list">
-            </ul>
-        </section>
+        <form id="task-form">
+            <input type="text" id="task-input" placeholder="Nueva tarea">
+            <button type="submit" class="add-task-button">Agregar</button>
+        </form>
+        <div id="task-filters">            
+            <button data-filter="pending">Pendientes</button>
+            <button data-filter="completed">Completadas</button>
+            <button data-filter="all">Todas</button>
+        </div>
 
-        <button type="button" id="clear-button" class="clear-button">
-            Borrar Todo
-        </button>
-    </section>
+
+        <ul id="task-list"></ul>
+        <button id="clear-button" class="clear-button">Eliminar todas</button>
+    </div>
+    
     <script type="module" src="./app.js"></script>
 </body>
 </html>
