@@ -1,0 +1,31 @@
+
+<!-- TASK MANAGER -->
+<div id="task-manager">
+    <div id="task-manager-header">
+        <span id="welcome-message">Hola 👋</span>
+        <span id="task-counter"></span>
+        <div id="task-theme-container">
+            <button id="task-theme-button">
+                <img src="./assets/dark.svg" alt="Cambiar Tema">
+            </button>
+            <button id="logout-button">
+                <img src="./assets/logout-1.png" alt="Cerrar sesión">
+            </button>
+        </div>
+    </div>
+    
+
+    <form id="task-form">
+        <input type="text" id="task-input" placeholder="Nueva tarea">
+        <button type="submit" class="add-task-button">Agregar</button>
+    </form>
+    <div id="task-filters">            
+        <button data-filter="pending">Pendientes</button>
+        <button data-filter="completed">Completadas</button>
+        <button data-filter="all">Todas</button>
+    </div>
+
+
+    <ul id="task-list"></ul>
+    <button id="clear-button" class="clear-button">Eliminar todas</button>
+</div>

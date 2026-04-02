@@ -1,9 +1,15 @@
 // frontend/ui/render.tasks.js
+
 import { getTasks, currentFilter } from '../state/tasks.state.js';
 import { createTaskListElement } from './render.task.item.js';
-import { DOM } from '../dom/dom.js';
 
-export function renderTasks(taskList = DOM.taskList) {
+export function renderTasks() {
+  const taskList = document.querySelector('#task-list');
+  const taskCounter = document.querySelector('#task-counter');
+  const clearButton = document.querySelector('#clear-button');
+
+  if (!taskList) return; // vista no cargada aún
+
   let tasks = getTasks();
 
   if (currentFilter === 'pending') {
@@ -13,26 +19,25 @@ export function renderTasks(taskList = DOM.taskList) {
   }
 
   taskList.innerHTML = '';
-  tasks.forEach(task => taskList.appendChild(createTaskListElement(task, taskList)));
+  tasks.forEach(task => taskList.appendChild(createTaskListElement(task)));
 
-  updateTaskCounter(getTasks()); // siempre sobre todas
-  toggleClearButton();
-};
+  updateTaskCounter(taskCounter, getTasks());
+  toggleClearButton(clearButton);
+}
 
-// ---------------- TASK COUNTER ----------------
-function updateTaskCounter(tasks) {
-  const pending = tasks.filter(task => !task.completed).length;
+function updateTaskCounter(counterEl, tasks) {
+  const pending = tasks.filter(t => !t.completed).length;
+
   if (pending === 0) {
-    DOM.taskCounter.textContent = '¡No tienes tareas pendientes! 🎉';
+    counterEl.textContent = '¡No tienes tareas pendientes! 🎉';
   } else if (pending === 1) {
-    DOM.taskCounter.textContent = 'Tienes 1 tarea pendiente.';
+    counterEl.textContent = 'Tienes 1 tarea pendiente.';
   } else {
-    DOM.taskCounter.textContent = `Tienes ${pending} tareas pendientes.`;
+    counterEl.textContent = `Tienes ${pending} tareas pendientes.`;
   }
 }
 
-// ---------------- TOGGLE CLEAR BUTTON ----------------
-function toggleClearButton() {
+function toggleClearButton(clearButton) {
   const hasTasks = getTasks().length > 0;
-  DOM.clearButton.classList.toggle('clear-button-active', hasTasks);
+  clearButton.classList.toggle('clear-button-active', hasTasks);
 }
