@@ -50,7 +50,8 @@ body {
   #change-password-container,
   #register-form,
   #forgot-form,
-  #change-password-form {
+  #change-password-form,
+  #register-form {
     display: flex;
     flex-direction: column;
     max-width: 400px;
@@ -58,10 +59,20 @@ body {
     text-align: center;
   }
 
+  #login-container p,
+  #go-register,
+  #go-forgot {
+    font-size: 10px;
+    color: #555;
+    margin: 0;
+    text-decoration: none;
+  }
+
   #login-form,
   #register-form,
   #forgot-form,
-  #change-password-form {
+  #change-password-form,
+  #register-form {
     width: 100%;
     align-items: center;
   }
@@ -95,7 +106,10 @@ body {
   }
   
   #task-input,
-  #login-form input {
+  #login-form input,
+  #register-form input,
+  #forgot-form input,
+  #change-password-form input {
     padding: 10px;
     width: 75%;
     margin-right: 10px;
@@ -105,7 +119,12 @@ body {
   }
 
   .add-task-button,
-  #login-form button {
+  #login-form button,
+  
+  #register-form button,
+  #task-filters button,
+  #forgot-form button,
+  #change-password-form button {
     background-color: rgba(0, 0, 255, 0.387);
     color: white;
     border: none;
@@ -116,8 +135,25 @@ body {
     cursor: pointer;
   }
 
+  #task-filters {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+  }
+
+  #task-filters button {
+    background-color: rgba(10, 10, 16, 0.227);
+    width: 20%;
+    padding: 4px;
+    font-size: 10px;
+  }
+
   .add-task-button:hover {
     background-color: rgba(0, 0, 255, 0.589);
+  }
+
+  #task-filters button:hover {
+    background-color: rgba(10, 10, 16, 0.427);
   }
 
   #task-list {
